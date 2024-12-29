@@ -1,106 +1,246 @@
-/* General Styles */
-body {
-  font-family: 'Arial', sans-serif;
+/* Reset & Base */
+* {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom, #f9f9f9, #eaeaea);
-  text-align: center;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  font-family: "Montserrat", sans-serif;
+  background: #121212; /* Dark background */
+  color: #ffffff;
+}
+
+/* Utilities */
+.hidden {
+  display: none !important;
 }
 
 /* Header */
-h1 {
-  margin-top: 20px;
+header {
+  background: #1f1f1f;
+  padding: 1rem;
+  text-align: center;
+}
+header h1 {
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin: 0;
+  color: #ff9800; /* bright orange */
+}
+
+/* Main */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Filters Section (top) */
+.filters-section {
+  background: #1f1f1f;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+.filters-section h3 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+#filters-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+}
+.filter-group label {
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+.filter-group select {
+  background: #2c2c2c;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1f1f1f;
+  padding: 2rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.hero-text {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.hero-text h2 {
   font-size: 2rem;
-  color: #444;
+  margin-bottom: 0.5rem;
+}
+.hero-text p {
+  font-size: 1.1rem;
+  color: #bbbbbb;
+  margin-bottom: 1.5rem;
+}
+.hero-image {
+  width: 280px;
+  max-width: 90%;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
-/* Button */
-button {
-  margin-top: 20px;
-  padding: 12px 30px;
-  font-size: 1rem;
-  font-weight: bold;
+/* Primary Button */
+.primary-btn {
+  background: linear-gradient(45deg, #ff9800, #ffc107);
   border: none;
-  border-radius: 8px;
-  background: #4caf50;
-  color: white;
+  border-radius: 5px;
+  color: #333;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
-button:hover {
-  background: #388e3c;
+.primary-btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255,152,0,0.4);
+  color: #fff;
 }
 
-/* Loading Spinner */
-#loading {
-  display: none;
-  margin-top: 20px;
+/* Loading Indicator */
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
 }
-
-#loading::after {
-  content: '';
-  width: 30px;
-  height: 30px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #4caf50;
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 6px solid #333;
+  border-top: 6px solid #ff9800;
   border-radius: 50%;
-  display: inline-block;
   animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
 }
-
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* Restaurant Info Box */
-#restaurant-container {
-  margin-top: 30px;
-  padding: 20px;
+/* Restaurant Card */
+.card {
+  background: #1f1f1f;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: white;
-  display: inline-block;
-  text-align: left;
-  max-width: 400px;
+  padding: 1.5rem;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  margin-bottom: 2rem;
 }
-
-#restaurant-info h2 {
+.restaurant-info {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.restaurant-info h2 {
   font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  color: #ff9800;
+}
+.restaurant-info p {
+  margin: 0.25rem 0;
 }
 
-#restaurant-info p {
-  font-size: 1rem;
-  margin: 5px 0;
-  color: #555;
-}
-
-#restaurant-info a {
-  text-decoration: none;
-  color: #1e88e5;
-  font-weight: bold;
-}
-
-#restaurant-info a:hover {
-  text-decoration: underline;
+/* Hours Section */
+.restaurant-hours {
+  margin: 1rem auto;
+  text-align: center;
+  line-height: 1.4;
+  font-size: 0.95rem;
+  color: #bbb;
+  white-space: pre-line; /* So newlines from array join nicely */
 }
 
 /* Restaurant Image */
-#restaurant-image img {
+.restaurant-image img {
+  display: block;
   width: 100%;
-  height: auto;
+  max-height: 300px;
+  object-fit: contain; /* show entire image */
   border-radius: 8px;
-  margin-top: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
 }
 
-/* Map */
-#restaurant-map {
-  margin-top: 15px;
+/* Restaurant Map */
+.restaurant-map {
+  width: 100%;
   height: 300px;
   border-radius: 8px;
-  overflow: hidden;
+  margin-top: 1rem;
+}
+
+/* Links */
+a {
+  color: #00e0ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: #80efff;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #1f1f1f;
+  color: #fff;
+  margin-top: auto;
+}
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.secondary-btn {
+  background: linear-gradient(45deg, #00e0ff, #00ffaa);
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 1rem;
+}
+.secondary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,224,255,0.4);
+  color: #fff;
+}
+
+/* Hide or show using .hidden */
+.hidden {
+  display: none !important;
+}
+
+/* Center the new "Find Me Something Else" button */
+.another-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }

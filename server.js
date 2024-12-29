@@ -11,6 +11,7 @@ app.use(express.static('public'));
 
 // Local API Route for Testing
 app.get('/api/restaurants', require('./api/restaurants'));
+app.get('/api/details', require('./api/details'));
 
 app.listen(PORT, () => {
     console.log(`🚀 Local server running on http://localhost:${PORT}`);

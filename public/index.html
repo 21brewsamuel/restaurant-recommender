@@ -1,28 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Restaurant Recommender</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Random Restaurant Recommender</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <h1>🍽️ Find Your Next Meal</h1>
-        <button id="get-restaurant">Find a Restaurant</button>
-    </header>
+  <!-- HEADER -->
+  <header>
+    <h1>🍽️ Find Your Next Meal</h1>
+  </header>
 
-    <div id="loading"></div>
-    <div id="restaurant-container">
-        <div id="restaurant-info"></div>
-        <div id="restaurant-image"></div>
-        <div id="restaurant-map"></div>
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- FILTERS AT THE TOP -->
+    <section class="filters-section">
+      <h3>Advanced Filters</h3>
+      <form id="filters-form">
+        <!-- Price Range -->
+        <div class="filter-group">
+          <label for="priceRange">Price Range:</label>
+          <select name="priceRange" id="priceRange">
+            <option value="">Any</option>
+            <option value="$">$</option>
+            <option value="$$">$$</option>
+            <option value="$$$">$$$</option>
+          </select>
+        </div>
+
+        <!-- Cuisine -->
+        <div class="filter-group">
+          <label for="cuisine">Cuisine Type:</label>
+          <select name="cuisine" id="cuisine">
+            <option value="">Any</option>
+            <option value="italian">Italian</option>
+            <option value="mexican">Mexican</option>
+            <option value="chinese">Chinese</option>
+          </select>
+        </div>
+      </form>
+    </section>
+
+    <!-- HERO SECTION (shown only before first successful click) -->
+    <section class="hero-section" id="landing-state">
+      <div class="hero-text">
+        <h2>Hungry but Indecisive?</h2>
+        <p>Let us pick a spot for you!</p>
+      </div>
+      <img
+        src="assets/hungry-person.jpg"
+        alt="Hungry Person"
+        id="landing-image"
+        class="hero-image"
+      />
+      <!-- The initial button -->
+      <button id="get-restaurant" class="primary-btn">Find a Restaurant</button>
+    </section>
+
+    <!-- LOADING INDICATOR -->
+    <div id="loading" class="loading-indicator hidden">
+      <div class="spinner"></div>
+      <p>Finding the best spot...</p>
     </div>
 
-    <footer>
-        <p>Made For Indecisive People Like Us</p>
-    </footer>
-    <script src="script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAESBBqvrbYB-8uAsLzRoE3tAesOaTT49U"></script>
+    <!-- RESTAURANT CONTAINER (hidden initially) -->
+    <section id="restaurant-container" class="card hidden">
+      <div id="restaurant-info" class="restaurant-info"></div>
+      <div id="restaurant-hours" class="restaurant-hours"></div>
+      <div id="restaurant-image" class="restaurant-image"></div>
+      <div id="restaurant-map" class="restaurant-map"></div>
+      <!-- New button (hidden until first restaurant is displayed) -->
+      <div class="another-btn-wrapper">
+        <button id="another-restaurant" class="secondary-btn hidden">
+          Find Me Something Else
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Made For Indecisive People Like Us ❤️</p>
+  </footer>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
+
+  <!-- Google Maps (Frontend API Key) -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAESBBqvrbYB-8uAsLzRoE3tAesOaTT49U"
+    async
+    defer
+  ></script>
 </body>
 </html>
