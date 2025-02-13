@@ -108,6 +108,25 @@ async function fetchRandomRestaurant() {
 }
 
 /* ============== HELPER FUNCTIONS ============== */
+function displayPhoto(restaurant, restaurantImage) {
+  if (restaurant.photoUrl) {
+    restaurantImage.innerHTML = `
+      <img src="${restaurant.photoUrl}" alt="Restaurant Image" />
+    `;
+    return;
+  }
+
+  let builtPhotoUrl = '';
+  if (restaurant.photos?.[0]?.photo_reference) {
+    const photoRef = restaurant.photos[0].photo_reference;
+    builtPhotoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photoRef}&key=AIzaSyAESBBqvrbYB-8uAsLzRoE3tAesOaTT49U`;
+  }
+  
+  restaurantImage.innerHTML = builtPhotoUrl 
+    ? `<img src="${builtPhotoUrl}" alt="Restaurant Image" />`
+    : `<p>No image available.</p>`;
+}
+
 async function displayRestaurant(restaurant, fallbackLat, fallbackLng) {
   const restaurantContainer = document.getElementById('restaurant-container');
   const restaurantInfo = document.getElementById('restaurant-info');
@@ -128,52 +147,42 @@ async function displayRestaurant(restaurant, fallbackLat, fallbackLng) {
 
   restaurantInfo.innerHTML = `
     <h2>${name}</h2>
-    <p><strong>Rating:</strong> ${rating}</p>
-    <p><strong>Address:</strong> ${vicinity}</p>
+    <p><i class="fas fa-star"></i> <strong>Rating:</strong> ${rating}</p>
+    <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> ${vicinity}</p>
     <a
       href="https://www.google.com/maps/search/?api=1&query=${lat},${lng}"
       target="_blank"
+      class="directions-link"
     >
-      📍 Take me there
+      <i class="fas fa-directions"></i> Get Directions
     </a>
   `;
 
   // Photo
-  if (restaurant.photoUrl) {
-    restaurantImage.innerHTML = `
-      <img src="${restaurant.photoUrl}" alt="Restaurant Image" />
-    `;
-  } else {
-    // Build from photo_reference if available
-    let builtPhotoUrl = '';
-    if (
-      restaurant.photos &&
-      restaurant.photos.length > 0 &&
-      restaurant.photos[0].photo_reference
-    ) {
-      const photoRef = restaurant.photos[0].photo_reference;
-      // Use your front-end key here
-      builtPhotoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photoRef}&key=AIzaSyAESBBqvrbYB-8uAsLzRoE3tAesOaTT49U`;
-    }
-    if (builtPhotoUrl) {
-      restaurantImage.innerHTML = `
-        <img src="${builtPhotoUrl}" alt="Restaurant Image" />
-      `;
-    } else {
-      restaurantImage.innerHTML = `<p>No image available.</p>`;
-    }
-  }
+  displayPhoto(restaurant, restaurantImage);
 
   // Map
   map = new google.maps.Map(restaurantMap, {
     center: { lat, lng },
     zoom: 15
   });
+  // Add 'new' keyword when creating the marker
   new google.maps.Marker({
     position: { lat, lng },
     map,
     title: name
   });
+
+  // Set up delivery links
+  const ubereatsBtn = document.getElementById('ubereats-btn');
+  const doordashBtn = document.getElementById('doordash-btn');
+  
+  // Encode the restaurant name and address for the URLs
+  const encodedSearch = encodeURIComponent(`${name} ${vicinity}`);
+  
+  // Update the href attributes
+  ubereatsBtn.href = `https://www.ubereats.com/search?q=${encodedSearch}`;
+  doordashBtn.href = `https://www.doordash.com/search/store/${encodedSearch}`;
 
   // Get hours from /api/details
   if (restaurant.place_id) {

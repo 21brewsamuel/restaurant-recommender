@@ -7,7 +7,7 @@
 html, body {
   height: 100%;
   font-family: "Montserrat", sans-serif;
-  background: #121212; /* Dark background */
+  background: #0A0A0A;
   color: #ffffff;
 }
 
@@ -16,58 +16,79 @@ html, body {
   display: none !important;
 }
 
-/* Header */
+/* Header - More prominent and modern */
 header {
-  background: #1f1f1f;
-  padding: 1rem;
+  background: linear-gradient(to right, #1a1a1a, #2d2d2d);
+  padding: 1.5rem;
   text-align: center;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 header h1 {
   font-weight: 600;
-  font-size: 1.75rem;
+  font-size: 2rem;
   margin: 0;
-  color: #ff9800; /* bright orange */
+  background: linear-gradient(45deg, #ff9800, #ff5722);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Main */
+/* Main Content */
 main {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
 
-/* Filters Section (top) */
+/* Filters Section - More intuitive and modern */
 .filters-section {
   background: #1f1f1f;
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 1.5rem;
+  border-radius: 16px;
   margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 .filters-section h3 {
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
+  color: #ff9800;
 }
 #filters-form {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 .filter-group {
-  display: flex;
-  flex-direction: column;
-  min-width: 160px;
+  flex: 1;
+  min-width: 200px;
 }
 .filter-group label {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
   font-weight: 500;
+  display: block;
+  color: #ffffff;
 }
 .filter-group select {
+  width: 100%;
   background: #2c2c2c;
-  color: #fff;
-  border: 1px solid #444;
-  border-radius: 4px;
-  padding: 0.5rem;
+  color: #ffffff;
+  border: 2px solid #444;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.filter-group select:hover {
+  border-color: #666;
+}
+.filter-group select:focus {
+  border-color: #ff9800;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.2);
 }
 
 /* Hero Section */
@@ -119,22 +140,17 @@ main {
   color: #fff;
 }
 
-/* Loading Indicator */
+/* Loading animation - More sophisticated */
 .loading-indicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 2rem auto;
+  margin: 3rem auto;
 }
 .spinner {
-  width: 40px;
-  height: 40px;
-  border: 6px solid #333;
-  border-top: 6px solid #ff9800;
+  width: 50px;
+  height: 50px;
+  border: 4px solid #333;
+  border-top: 4px solid #ff9800;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
+  animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
 }
 @keyframes spin {
   to {
@@ -142,22 +158,30 @@ main {
   }
 }
 
-/* Restaurant Card */
+/* Restaurant Card - More elegant */
 .card {
   background: #1f1f1f;
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
 }
 .restaurant-info {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 .restaurant-info h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #ff9800;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #ff9800, #ff5722);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 .restaurant-info p {
   margin: 0.25rem 0;
@@ -175,21 +199,22 @@ main {
 
 /* Restaurant Image */
 .restaurant-image img {
-  display: block;
   width: 100%;
-  max-height: 300px;
-  object-fit: contain; /* show entire image */
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 /* Restaurant Map */
 .restaurant-map {
   width: 100%;
-  height: 300px;
-  border-radius: 8px;
-  margin-top: 1rem;
+  height: 350px;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Links */
@@ -233,14 +258,75 @@ footer p {
   color: #fff;
 }
 
-/* Hide or show using .hidden */
-.hidden {
-  display: none !important;
-}
-
 /* Center the new "Find Me Something Else" button */
 .another-btn-wrapper {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
+}
+
+/* Delivery Buttons - More attractive */
+.delivery-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.delivery-btn {
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 200px;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.delivery-btn.ubereats {
+  background: #06C167;
+  color: #ffffff;
+  border: 2px solid transparent;
+}
+
+.delivery-btn.doordash {
+  background: #ff3008;
+  color: #ffffff;
+  border: 2px solid transparent;
+}
+
+.delivery-btn:hover {
+  transform: translateY(-3px);
+  color: #ffffff;
+}
+
+.delivery-btn.ubereats:hover {
+  box-shadow: 0 8px 20px rgba(6, 193, 103, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.delivery-btn.doordash:hover {
+  box-shadow: 0 8px 20px rgba(255, 48, 8, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .delivery-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .delivery-btn {
+    width: 100%;
+  }
+  
+  .restaurant-info h2 {
+    font-size: 1.5rem;
+  }
 }

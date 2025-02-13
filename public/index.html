@@ -17,8 +17,13 @@
 
   <!-- Google Fonts -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
     rel="stylesheet"
+  />
+  <!-- Font Awesome -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   />
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css" />
@@ -26,44 +31,47 @@
 <body>
   <!-- HEADER -->
   <header>
-    <h1>🍽️ Find Your Next Meal</h1>
+    <h1><i class="fas fa-utensils"></i> Find Your Next Meal</h1>
   </header>
 
   <!-- MAIN CONTENT -->
   <main>
     <!-- FILTERS AT THE TOP -->
     <section class="filters-section">
-      <h3>Advanced Filters</h3>
+      <h3><i class="fas fa-sliders-h"></i> Advanced Filters</h3>
       <form id="filters-form">
         <!-- Price Range -->
         <div class="filter-group">
-          <label for="priceRange">Price Range:</label>
+          <label for="priceRange"><i class="fas fa-dollar-sign"></i> Price Range:</label>
           <select name="priceRange" id="priceRange">
-            <option value="">Any</option>
-            <option value="$">$</option>
-            <option value="$$">$$</option>
-            <option value="$$$">$$$</option>
+            <option value="">Any Price</option>
+            <option value="$">$ (Budget)</option>
+            <option value="$$">$$ (Moderate)</option>
+            <option value="$$$">$$$ (High-End)</option>
           </select>
         </div>
 
         <!-- Cuisine -->
         <div class="filter-group">
-          <label for="cuisine">Cuisine Type:</label>
+          <label for="cuisine"><i class="fas fa-globe"></i> Cuisine Type:</label>
           <select name="cuisine" id="cuisine">
-            <option value="">Any</option>
-            <option value="italian">Italian</option>
-            <option value="mexican">Mexican</option>
-            <option value="chinese">Chinese</option>
+            <option value="">Any Cuisine</option>
+            <option value="italian">🇮🇹 Italian</option>
+            <option value="mexican">🇲🇽 Mexican</option>
+            <option value="chinese">🇨🇳 Chinese</option>
+            <option value="japanese">🇯🇵 Japanese</option>
+            <option value="indian">🇮🇳 Indian</option>
+            <option value="thai">🇹🇭 Thai</option>
           </select>
         </div>
       </form>
     </section>
 
-    <!-- HERO SECTION (shown only before first successful click) -->
+    <!-- HERO SECTION -->
     <section class="hero-section" id="landing-state">
       <div class="hero-text">
-        <h2>Hungry but Indecisive?</h2>
-        <p>Let us pick a spot for you!</p>
+        <h2><i class="fas fa-question-circle"></i> Hungry but Indecisive?</h2>
+        <p>Let our food finder surprise you with the perfect spot!</p>
       </div>
       <img
         src="assets/hungry-person.jpg"
@@ -71,26 +79,41 @@
         id="landing-image"
         class="hero-image"
       />
-      <!-- The initial button -->
-      <button id="get-restaurant" class="primary-btn">Find a Restaurant</button>
+      <button id="get-restaurant" class="primary-btn">
+        <i class="fas fa-search"></i> Find a Restaurant
+      </button>
     </section>
 
     <!-- LOADING INDICATOR -->
     <div id="loading" class="loading-indicator hidden">
       <div class="spinner"></div>
-      <p>Finding the best spot...</p>
+      <p><i class="fas fa-cookie-bite"></i> Finding the perfect spot...</p>
     </div>
 
-    <!-- RESTAURANT CONTAINER (hidden initially) -->
+    <!-- RESTAURANT CONTAINER -->
     <section id="restaurant-container" class="card hidden">
       <div id="restaurant-info" class="restaurant-info"></div>
-      <div id="restaurant-hours" class="restaurant-hours"></div>
+      <div id="restaurant-hours" class="restaurant-hours">
+        <i class="far fa-clock"></i>
+        <span id="hours-content"></span>
+      </div>
       <div id="restaurant-image" class="restaurant-image"></div>
       <div id="restaurant-map" class="restaurant-map"></div>
-      <!-- New button (hidden until first restaurant is displayed) -->
+      
+      <!-- Delivery Options -->
+      <div class="delivery-buttons">
+        <a href="#" target="_blank" id="ubereats-btn" class="delivery-btn ubereats">
+          <i class="fas fa-bicycle"></i> Order on Uber Eats
+        </a>
+        <a href="#" target="_blank" id="doordash-btn" class="delivery-btn doordash">
+          <i class="fas fa-motorcycle"></i> Order on DoorDash
+        </a>
+      </div>
+      
+      <!-- Try Again Button -->
       <div class="another-btn-wrapper">
         <button id="another-restaurant" class="secondary-btn hidden">
-          Find Me Something Else
+          <i class="fas fa-dice"></i> Find Me Something Else
         </button>
       </div>
     </section>
@@ -98,10 +121,10 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>Made For Indecisive People Like Us ❤️</p>
+    <p>Made with <i class="fas fa-heart"></i> for Indecisive People Like Us</p>
   </footer>
 
-  <!-- Main Script -->
+  <!-- Scripts -->
   <script src="script.js"></script>
 
   <!-- Google Maps (Frontend API Key) -->
