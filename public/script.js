@@ -147,8 +147,8 @@ async function displayRestaurant(restaurant, fallbackLat, fallbackLng) {
 
   restaurantInfo.innerHTML = `
     <h2>${name}</h2>
-    <p><i class="fas fa-star"></i> <strong>Rating:</strong> ${rating}</p>
-    <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> ${vicinity}</p>
+    <p><i class="fas fa-star"></i> Rating: ${rating}</p>
+    <p><i class="fas fa-map-marker-alt"></i> Address: ${vicinity}</p>
     <a
       href="https://www.google.com/maps/search/?api=1&query=${lat},${lng}"
       target="_blank"

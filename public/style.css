@@ -176,25 +176,36 @@ main {
   margin-bottom: 1.5rem;
 }
 .restaurant-info h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(45deg, #ff9800, #ff5722);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #ff9800;
+  text-align: center;
 }
 .restaurant-info p {
-  margin: 0.25rem 0;
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.restaurant-info i {
+  color: #ff9800;
 }
 
 /* Hours Section */
 .restaurant-hours {
-  margin: 1rem auto;
+  margin: 2rem auto;
   text-align: center;
-  line-height: 1.4;
-  font-size: 0.95rem;
-  color: #bbb;
-  white-space: pre-line; /* So newlines from array join nicely */
+  line-height: 1.6;
+  font-size: 1.1rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 8px;
+  position: relative;
+  z-index: 1;
+  white-space: pre-line;
 }
 
 /* Restaurant Image */
@@ -329,4 +340,23 @@ footer p {
   .restaurant-info h2 {
     font-size: 1.5rem;
   }
+}
+
+/* Get Directions link */
+.directions-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #00e0ff;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: rgba(0, 224, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.directions-link:hover {
+  background: rgba(0, 224, 255, 0.2);
+  transform: translateY(-2px);
 }
