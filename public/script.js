@@ -176,6 +176,7 @@ async function displayRestaurant(restaurant, fallbackLat, fallbackLng) {
   // Set up delivery links
   const ubereatsBtn = document.getElementById('ubereats-btn');
   const doordashBtn = document.getElementById('doordash-btn');
+  const grubhubBtn = document.getElementById('grubhub-btn');
   
   // Encode the restaurant name and address for the URLs
   const encodedSearch = encodeURIComponent(`${name} ${vicinity}`);
@@ -183,6 +184,7 @@ async function displayRestaurant(restaurant, fallbackLat, fallbackLng) {
   // Update the href attributes
   ubereatsBtn.href = `https://www.ubereats.com/search?q=${encodedSearch}`;
   doordashBtn.href = `https://www.doordash.com/search/store/${encodedSearch}`;
+  grubhubBtn.href = `https://www.grubhub.com/search?queryText=${encodedSearch}`;
 
   // Get hours from /api/details
   if (restaurant.place_id) {
