@@ -203,6 +203,29 @@ async function displayRestaurant(restaurant, fallbackLat, fallbackLng) {
     restaurantHours.innerHTML = 'Hours of operation not available.';
   }
 
+  // Add reviews section
+  if (restaurant.reviews) {
+    const reviewsHtml = restaurant.reviews
+      .slice(0, 3)
+      .map(review => `
+        <div class="review">
+          <div class="review-header">
+            <span class="review-rating">⭐ ${review.rating}</span>
+            <span class="review-author">${review.author_name}</span>
+          </div>
+          <p class="review-text">${review.text}</p>
+        </div>
+      `)
+      .join('');
+      
+    restaurantInfo.innerHTML += `
+      <div class="reviews-section">
+        <h3>Recent Reviews</h3>
+        ${reviewsHtml}
+      </div>
+    `;
+  }
+
   restaurantContainer.classList.remove('hidden');
 }
 
@@ -220,18 +243,16 @@ function displayNoRestaurants() {
   restaurantContainer.classList.remove('hidden');
 }
 
-function displayError() {
-  const restaurantContainer = document.getElementById('restaurant-container');
-  const restaurantInfo = document.getElementById('restaurant-info');
-  const restaurantHours = document.getElementById('restaurant-hours');
-  const restaurantImage = document.getElementById('restaurant-image');
-  const restaurantMap = document.getElementById('restaurant-map');
-
-  restaurantInfo.innerHTML = `<p>Error fetching restaurant data. Please try again.</p>`;
-  restaurantHours.innerHTML = '';
-  restaurantImage.innerHTML = '';
-  restaurantMap.innerHTML = '';
-  restaurantContainer.classList.remove('hidden');
+function displayError(message = 'Error fetching restaurant data. Please try again.') {
+  const errorContainer = document.createElement('div');
+  errorContainer.className = 'error-message';
+  errorContainer.innerHTML = `
+    <p><i class="fas fa-exclamation-circle"></i> ${message}</p>
+    <button onclick="fetchRandomRestaurant()" class="retry-btn">
+      <i class="fas fa-redo"></i> Try Again
+    </button>
+  `;
+  document.querySelector('main').appendChild(errorContainer);
 }
 
 function displayLocationError(msg) {
@@ -246,4 +267,18 @@ function displayLocationError(msg) {
   restaurantImage.innerHTML = '';
   restaurantMap.innerHTML = '';
   restaurantContainer.classList.remove('hidden');
+}
+
+function toggleFavorite(restaurant) {
+  let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+  const index = favorites.findIndex(f => f.place_id === restaurant.place_id);
+  
+  if (index === -1) {
+    favorites.push(restaurant);
+  } else {
+    favorites.splice(index, 1);
+  }
+  
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+  updateFavoriteButton(restaurant);
 }

@@ -361,6 +361,12 @@ footer p {
   border: 2px solid transparent;
 }
 
+.delivery-btn.grubhub {
+  background: #FF8000; 
+  color: #ffffff;
+  border: 2px solid transparent;
+}
+
 .delivery-btn:hover {
   transform: translateY(-3px);
   color: #ffffff;
@@ -373,6 +379,11 @@ footer p {
 
 .delivery-btn.doordash:hover {
   box-shadow: 0 8px 20px rgba(255, 48, 8, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.delivery-btn.grubhub:hover {
+  box-shadow: 0 8px 20px rgba(255, 128, 0, 0.4);
   border-color: rgba(255, 255, 255, 0.2);
 }
 

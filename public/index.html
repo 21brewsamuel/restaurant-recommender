@@ -62,6 +62,31 @@
             <option value="japanese">🇯🇵 Japanese</option>
             <option value="indian">🇮🇳 Indian</option>
             <option value="thai">🇹🇭 Thai</option>
+            <option value="vietnamese">🇻🇳 Vietnamese</option>
+            <option value="mediterranean">🌊 Mediterranean</option>
+            <option value="american">🇺🇸 American</option>
+            <option value="bbq">🍖 BBQ</option>
+            <option value="seafood">🐟 Seafood</option>
+          </select>
+        </div>
+
+        <!-- Distance -->
+        <div class="filter-group">
+          <label for="distance"><i class="fas fa-road"></i> Distance:</label>
+          <select name="distance" id="distance">
+            <option value="3219">Within 2 miles</option>
+            <option value="4828">Within 3 miles</option>
+            <option value="8047">Within 5 miles</option>
+          </select>
+        </div>
+
+        <!-- Rating -->
+        <div class="filter-group">
+          <label for="rating"><i class="fas fa-star"></i> Minimum Rating:</label>
+          <select name="rating" id="rating">
+            <option value="">Any Rating</option>
+            <option value="4">4+ Stars</option>
+            <option value="4.5">4.5+ Stars</option>
           </select>
         </div>
       </form>
@@ -103,10 +128,13 @@
       <!-- Delivery Options -->
       <div class="delivery-buttons">
         <a href="#" target="_blank" id="ubereats-btn" class="delivery-btn ubereats">
-          <i class="fas fa-bicycle"></i> Order on Uber Eats
+          <i class="fas fa-bicycle"></i> Uber Eats
         </a>
         <a href="#" target="_blank" id="doordash-btn" class="delivery-btn doordash">
-          <i class="fas fa-motorcycle"></i> Order on DoorDash
+          <i class="fas fa-motorcycle"></i> DoorDash
+        </a>
+        <a href="#" target="_blank" id="grubhub-btn" class="delivery-btn grubhub">
+          <i class="fas fa-car"></i> Grubhub
         </a>
       </div>
       
